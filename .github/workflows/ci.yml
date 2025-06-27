@@ -39,9 +39,12 @@ jobs:
         # Confirme que le code est bien récupéré
       - run: echo "🖥️ Le workflow est maintenant prêt à tester votre code sur le runner."
         # Message d'information
-      - name: Lister les fichiers dans le dépôt
+        - name: Lister les fichiers dans le dépôt
         run: |
           ls ${{ github.workspace }}
+      - name: Build Docker image
+        run: docker build -t tp-cicd .
+
         # Affiche tous les fichiers à la racine du dépôt
       - run: echo "🍏 Le statut de ce job est ${{ job.status }}."
         # Affiche le statut du job (succès/échec)
