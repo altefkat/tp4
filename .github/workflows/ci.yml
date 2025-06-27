@@ -15,6 +15,18 @@ jobs:
         # Affiche la branche et le nom du repo
       - name: Récupérer le code du dépôt
         uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Installer les dépendances
+        run: pip install pytest
+
+      - name: Lancer les tests unitaires
+        run: python3 test_simple_math.py
+
         # Clone le dépôt GitHub sur le runner
       - run: echo "💡 Le dépôt ${{ github.repository }} a été cloné sur le runner."
         # Confirme que le code est bien récupéré
