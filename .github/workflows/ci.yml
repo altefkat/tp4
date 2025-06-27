@@ -41,7 +41,7 @@ jobs:
       - run: echo "🖥️ Le workflow est maintenant prêt à tester votre code sur le runner."
 
 
-        - name: Lister les fichiers dans le dépôt
+      - name: Lister les fichiers dans le dépôt
         run: |
           ls ${{ github.workspace }}
       - name: Build Docker image
