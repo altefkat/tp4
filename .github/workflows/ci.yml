@@ -24,6 +24,13 @@ jobs:
       - name: Installer les dépendances
         run: pip install pytest
 
+      - name: Installer pylint
+        run: pip install pylint
+
+      - name: Lint du code Python
+        run: pylint simple_math.py test_simple_math.py || true
+
+
       - name: Lancer les tests unitaires
         run: python3 test_simple_math.py
 
