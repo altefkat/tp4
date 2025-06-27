@@ -1,0 +1,28 @@
+name: Démo GitHub Actions
+run-name: ${{ github.actor }} teste GitHub Actions 🚀
+
+on: [push]   # Ce workflow se déclenche à chaque push sur n’importe quelle branche
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest   # Le job tourne sur une VM Ubuntu à jour
+    steps:
+      - run: echo "🎉 Le job a été déclenché automatiquement par un événement ${{ github.event_name }}."
+        # Affiche quel événement a déclenché ce workflow (ici, push)
+      - run: echo "🐧 Ce job s'exécute maintenant sur un serveur ${{ runner.os }} hébergé par GitHub !"
+        # Affiche le système d'exploitation du runner (Ubuntu, ici)
+      - run: echo "🔎 Le nom de votre branche est ${{ github.ref }} et votre dépôt est ${{ github.repository }}."
+        # Affiche la branche et le nom du repo
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+        # Clone le dépôt GitHub sur le runner
+      - run: echo "💡 Le dépôt ${{ github.repository }} a été cloné sur le runner."
+        # Confirme que le code est bien récupéré
+      - run: echo "🖥️ Le workflow est maintenant prêt à tester votre code sur le runner."
+        # Message d'information
+      - name: Lister les fichiers dans le dépôt
+        run: |
+          ls ${{ github.workspace }}
+        # Affiche tous les fichiers à la racine du dépôt
+      - run: echo "🍏 Le statut de ce job est ${{ job.status }}."
+        # Affiche le statut du job (succès/échec)
